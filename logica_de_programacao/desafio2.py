@@ -7,12 +7,12 @@ try:
     nome = str(input('Qual o seu nome: '))
 
     print(30 * '=')
-    diaSemana = str(input('\nQual o dia da semana: '))
+    dia_semana = str(input('\nQual o dia da semana: '))
 
     # remove espaços, acentos e deixa em minúsculo
-    diaSemanaFormatado = unidecode(diaSemana.strip().lower())
+    dia_semana_formatado = unidecode(dia_semana.strip().lower())
 
-    if (diaSemanaFormatado in ['sabado', 'domingo']):
+    if (dia_semana_formatado in ['sabado', 'domingo']):
         print(f'Olá {nome}, bom fim de semana! \n')
     else:
         print(f'Olá {nome}, boa semana! \n')

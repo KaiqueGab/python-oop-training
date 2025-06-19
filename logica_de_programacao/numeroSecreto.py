@@ -5,22 +5,22 @@ os.system('cls')
 
 try:
     nome = str(input('Qual o seu nome: '))
-    numeroSecreto = random.randint(1, 50)
-    numeroInputUser = None
+    numero_secreto = random.randint(1, 50)
+    numero_input_user = None
 
-    while numeroInputUser != numeroSecreto:
+    while numero_input_user != numero_secreto:
         print(30 * "=")
         numeroInputUser = int(input('\nMe informe um número (entre 1 a 50), torça para acertar: '))
 
 
-        if (numeroInputUser < numeroSecreto):
+        if (numero_input_user < numero_secreto):
             print(f"Olá {nome}, o numero é maior que o digitado, tente novamente!!! \n")
 
-        elif (numeroInputUser > numeroSecreto):
+        elif (numero_input_user > numero_secreto):
             print(f"Olá {nome}, o numero é menor que o digitado, tente novamente!!! \n")
 
         else:
-            print(f"Olá {nome}, voce acertou o Número SECRETO {numeroSecreto} \n")
+            print(f"Olá {nome}, voce acertou o Número SECRETO {numero_secreto} \n")
         
 
 except ValueError:
