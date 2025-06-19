@@ -9,16 +9,26 @@ def cadastrar_rest():
     nome_rest = input('Digite o nome do Restaurante que deseja Cadastrar: ')
     restaurantes.append(nome_rest)
     print(f'\nO restaurante {nome_rest} foi cadastrado com SUCESSO!\n')
-    
+
     print(30 * '=')
     input('Digite uma tecla para voltar ao Menu Principal: ')
     main()
 
 def listar_rest():
-    print('Listar restaurantes: ')
+    os.system('cls')
+    print('Listar Restaurantes:\n')
+
+    print(30 * '=')
+    input('Digite uma tecla para voltar ao Menu Principal: ')
+    main()
 
 def ativar_rest():
-    print('Ativar restaurantes: ')
+    os.system('cls')
+    print('Ativar Restaurantes:\n')
+
+    print(30 * '=')
+    input('Digite uma tecla para voltar ao Menu Principal: ')
+    main()
     
 def finalizar_app():
     os.system('cls')
