@@ -1,44 +1,51 @@
 import os
 
-restaurantes = []
+restaurantes = ['UaiRango', 'Ifood', 'Zé Delivery']
+
+def voltar_menu():
+    print('\n' + 30 * '=')
+    input('Digite uma tecla para voltar ao Menu Principal: ')
+    main()
+
+
+def exibir_subtitulo(subtitulo):
+    os.system('cls')
+    print(f'{subtitulo}:\n')
+
 
 def cadastrar_rest():
-    os.system('cls')
-    print('Cadastros de Novos Restaurantes:\n')
+    exibir_subtitulo('Cadastros de Novos Restaurantes')
     
     nome_rest = input('Digite o nome do Restaurante que deseja Cadastrar: ')
     restaurantes.append(nome_rest)
-    print(f'\nO restaurante {nome_rest} foi cadastrado com SUCESSO!\n')
+    print(f'\nO restaurante {nome_rest} foi cadastrado com SUCESSO!')
 
-    print(30 * '=')
-    input('Digite uma tecla para voltar ao Menu Principal: ')
-    main()
+    voltar_menu()
+
 
 def listar_rest():
-    os.system('cls')
-    print('Listar Restaurantes:\n')
+    exibir_subtitulo('Listar Restaurantes')
 
-    print(30 * '=')
-    input('Digite uma tecla para voltar ao Menu Principal: ')
-    main()
+    for i, restaurante in enumerate(restaurantes, start=1):
+        print(f'{i}. {restaurante}')
+
+    voltar_menu()
+
 
 def ativar_rest():
-    os.system('cls')
-    print('Ativar Restaurantes:\n')
+    exibir_subtitulo('Ativar Restaurantes')
 
-    print(30 * '=')
-    input('Digite uma tecla para voltar ao Menu Principal: ')
-    main()
+    voltar_menu()
     
+
 def finalizar_app():
-    os.system('cls')
-    #os.system('clear') # Caso esteja no MAC
-    print('Finalizando o programa\n')
+    exibir_subtitulo('Finalizando o programa')
+
 
 def opcao_invalida():
     print('Opção Invalida!!\n')
-    input('Digite uma tecla para voltar ao Menu Principal')
-    main()
+    voltar_menu()
+
 
 def exibir_nome_programa():
     print("""
@@ -46,11 +53,13 @@ def exibir_nome_programa():
     ▄█ █▀█ █▄█ █▄█ █▀▄   ██▄ █░█ █▀▀ █▀▄ ██▄ ▄█ ▄█\n
         """)
 
+
 def exibir_opcoes():
     print('1. Cadastrar restaurante')
     print('2. Listar restaurante')
     print('3. Ativar restaurante')
     print('4. Sair\n')
+
 
 def escolher_opcao():
     try:
@@ -70,11 +79,13 @@ def escolher_opcao():
     except:
         opcao_invalida()
 
+
 def main():
     os.system('cls')    
     exibir_nome_programa()
     exibir_opcoes()
     escolher_opcao()
+
 
 if __name__ == '__main__':
     main()
