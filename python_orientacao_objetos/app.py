@@ -1,6 +1,8 @@
 import os
 
-restaurantes = ['UaiRango', 'Ifood', 'Zé Delivery']
+restaurantes = [{'nome':'UaiRango', 'categoria':'Japonesa', 'ativo':False},
+                {'nome':'Ifood', 'categoria':'Churracaria', 'ativo':True},
+                {'nome':'Cantina Italiana', 'categoria':'Pizza', 'ativo':True}]
 
 def voltar_menu():
     print('\n' + 30 * '=')
@@ -16,8 +18,12 @@ def exibir_subtitulo(subtitulo):
 def cadastrar_rest():
     exibir_subtitulo('Cadastros de Novos Restaurantes')
     
-    nome_rest = input('Digite o nome do Restaurante que deseja Cadastrar: ')
-    restaurantes.append(nome_rest)
+    nome_rest = input('Digite o nome do Restaurante que deseja Cadastrar: \n')
+    categ_rest = input(f'Digite o nome da Categoria do Restaurante {nome_rest}: ')
+
+    dados_rest = {'nome':nome_rest, 'categoria':categ_rest, 'ativo':False}
+
+    restaurantes.append(dados_rest)
     print(f'\nO restaurante {nome_rest} foi cadastrado com SUCESSO!')
 
     voltar_menu()
@@ -26,8 +32,11 @@ def cadastrar_rest():
 def listar_rest():
     exibir_subtitulo('Listar Restaurantes')
 
-    for i, restaurante in enumerate(restaurantes, start=1):
-        print(f'{i}. {restaurante}')
+    for restaurante in restaurantes:
+        nome_rest = restaurante['nome']
+        categ_rest = restaurante['categoria']
+        ativo_rest = restaurante['ativo']
+        print(f'- {nome_rest} | {categ_rest} | {ativo_rest}')
 
     voltar_menu()
 
