@@ -1,5 +1,4 @@
 import os 
-
 os.system('cls')
 
 def exibir_resultado():

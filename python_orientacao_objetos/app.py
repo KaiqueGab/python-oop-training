@@ -2,53 +2,99 @@ import os
 
 restaurantes = [{'nome':'UaiRango', 'categoria':'Japonesa', 'ativo':False},
                 {'nome':'Ifood', 'categoria':'Churracaria', 'ativo':True},
-                {'nome':'Cantina Italiana', 'categoria':'Pizza', 'ativo':True}]
+                {'nome':'Cantina Italiana', 'categoria':'Pizza', 'ativo':False}]
 
 def voltar_menu():
-    print('\n' + 30 * '=')
+    print()
     input('Digite uma tecla para voltar ao Menu Principal: ')
     main()
 
 
 def exibir_subtitulo(subtitulo):
     os.system('cls')
-    print(f'{subtitulo}:\n')
+    linha = '*' * (len(subtitulo))
+    print(linha)
+    print(subtitulo) 
+    print(linha)
+    print()
 
 
-def cadastrar_rest():
-    exibir_subtitulo('Cadastros de Novos Restaurantes')
+def cadastrar_restaurante():
+    '''
+    Essa função é responsável por cadastrar um novo restaurante.
+
+    Inputs:
+    - nome_restaurante: nome do restaurante a ser cadastrado
+    - categ_restaurante: categoria do restaurante
+
+    Outputs:
+    - Adiciona um novo restaurante à lista de restaurantes
+    '''
+    exibir_subtitulo('Cadastros de Novos Restaurantes: ')
     
-    nome_rest = input('Digite o nome do Restaurante que deseja Cadastrar: \n')
-    categ_rest = input(f'Digite o nome da Categoria do Restaurante {nome_rest}: ')
+    nome_restaurante = input('Digite o nome do Restaurante que deseja Cadastrar: ')
+    categ_restaurante = input(f'Digite o nome da Categoria do Restaurante {nome_restaurante}: ')
 
-    dados_rest = {'nome':nome_rest, 'categoria':categ_rest, 'ativo':False}
+    dados_restaurante = {'nome':nome_restaurante, 
+                         'categoria':categ_restaurante, 
+                         'ativo':False
+                         }
 
-    restaurantes.append(dados_rest)
-    print(f'\nO restaurante {nome_rest} foi cadastrado com SUCESSO!')
+    restaurantes.append(dados_restaurante)
+    print(f'\nO restaurante "{nome_restaurante}" foi cadastrado com SUCESSO!')
 
     voltar_menu()
 
 
-def listar_rest():
-    exibir_subtitulo('Listar Restaurantes')
+def listar_restaurante():
+    '''
+    Essa função é responsável por listar os restaurantes cadastrados.
 
+    Outputs:
+    - Exibe uma tabela com: nome, categoria e status (ativo/desativado) dos restaurantes.
+    '''
+    exibir_subtitulo('Listar Restaurantes: ')
+
+    print(f'{'Nome do Restaurante'.ljust(22)} | {'Categoria'.ljust(20)} | Status')
     for restaurante in restaurantes:
-        nome_rest = restaurante['nome']
-        categ_rest = restaurante['categoria']
-        ativo_rest = restaurante['ativo']
-        print(f'- {nome_rest} | {categ_rest} | {ativo_rest}')
+        nome_restaurante = restaurante['nome']
+        categ_restaurante = restaurante['categoria']
+        ativo_restaurante = 'Ativado' if restaurante['ativo'] else 'Desativado'
+        print(f'- {nome_restaurante.ljust(20)} | {categ_restaurante.ljust(20)} | {ativo_restaurante}')
 
     voltar_menu()
 
 
-def ativar_rest():
-    exibir_subtitulo('Ativar Restaurantes')
+def alternar_estado_restaurante():
+    '''Essa função é responsável por alternar o estado de um restaurante
+    
+    Inputs:
+    - nome_restaurante: nome do restaurante a ser alterado
+    - restaurante_encontrado: indica se o restaurante foi localizado
+
+    Outputs:
+    - mensagem: Exibe se o restaurante foi ativado ou desativado
+    
+    '''
+    exibir_subtitulo('Alterando o estado Restaurante: ')
+    nome_restaurante = input('Digite o nome do restaurante que deseja alternar o estado: ')
+    restaurante_encontrado = False
+    
+    for restaurante in restaurantes:
+        if nome_restaurante.lower() == restaurante['nome'].lower():
+            restaurante_encontrado = True
+            restaurante['ativo'] = not restaurante['ativo'] #Vai inverter o valor da chave [ativo]
+            mensagem = f'O restaurante {nome_restaurante} foi ATIVADO com sucesso!' if restaurante['ativo'] else f'O restaurante {nome_restaurante} foi DESATIVADO com sucesso!'
+            print(mensagem)
+
+    if not restaurante_encontrado:
+        print('O restaurante não foi encontrado')
 
     voltar_menu()
     
 
 def finalizar_app():
-    exibir_subtitulo('Finalizando o programa')
+    exibir_subtitulo('Finalizando o programa: ')
 
 
 def opcao_invalida():
@@ -66,7 +112,7 @@ def exibir_nome_programa():
 def exibir_opcoes():
     print('1. Cadastrar restaurante')
     print('2. Listar restaurante')
-    print('3. Ativar restaurante')
+    print('3. Alternar estado do restaurante')
     print('4. Sair\n')
 
 
@@ -76,11 +122,11 @@ def escolher_opcao():
 
         match opcao_escolhida:
             case 1:
-                cadastrar_rest()
+                cadastrar_restaurante()
             case 2:
-                listar_rest()
+                listar_restaurante()
             case 3:
-                ativar_rest()
+                alternar_estado_restaurante()
             case 4:
                 finalizar_app()
             case _:
