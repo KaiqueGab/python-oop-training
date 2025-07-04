@@ -5,23 +5,25 @@ class Restaurante:
     restaurantes = []
 
     def __init__(self, nome, categoria): #Método __init__ de inicializar o Construtor
-        self.nome = nome
-        self.categoria = categoria
-        self.ativo = False
+        self._nome = nome.title()
+        self._categoria = categoria.upper()
+        self._ativo = False
         Restaurante.restaurantes.append(self)
 
     def __str__(self): #Método __str__ de pegar a localização do objetivo na memoria e trazer o valor em formato String
-        return f'{self.nome} | {self.categoria}'
+        return f'{self._nome} | {self._categoria}'
 
     def listar_restaurantes():
+        print(f'{'Nome do Restaurante'.ljust(25)} | {'Categorial'.ljust(25)} | {'Status'}')
         for restaurante in Restaurante.restaurantes:
-            print(f'Nome: {restaurante.nome} | {restaurante.categoria} | {restaurante.ativo}')
+            print(f'{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {restaurante.ativo}')
+
+    @property
+    def ativo(self):
+        return '☑' if self._ativo else '☐'
 
 #Instanciando os Objetos
 restaurante_praca = Restaurante('Praça', 'Pizzaria')
 restaurante_pizza = Restaurante('PizzaExpress', 'Italiana')
 
-restaurantes = [restaurante_pizza, restaurante_praca]
-
-print(restaurante_praca)
-print(restaurante_pizza)
+Restaurante.listar_restaurantes()
