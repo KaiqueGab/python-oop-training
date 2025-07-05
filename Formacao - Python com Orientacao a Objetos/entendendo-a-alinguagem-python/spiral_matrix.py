@@ -1,6 +1,5 @@
-
-
-
+import os
+os.system('cls')
 
 def spiral_order(matrix):
 
