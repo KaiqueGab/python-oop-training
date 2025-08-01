@@ -14,8 +14,8 @@ class ContaBancaria:
     def ativo(self):
         return 'Ativo' if self._ativo else 'Desativado'
         
-conta1 = ContaBancaria('Kaique', '22.000,00')
-conta2 = ContaBancaria('Laiza', '21.653,00')
+conta1 = ContaBancaria('John Due', '22.000,00')
+conta2 = ContaBancaria('Jhon Lore', '21.653,00')
 
 print(conta1)
 
