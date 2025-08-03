@@ -21,4 +21,4 @@ Formação realizada na [Alura](https://cursos.alura.com.br/formacao-linguagem-p
 ---
 
 > Repositório pessoal de estudos.  
-> Sinta-se à vontade para
+> Sinta-se à vontade para explorar os exemplos!
